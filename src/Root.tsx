@@ -1,17 +1,23 @@
-import { Composition } from "remotion";
-import { Overlay } from "./Overlay";
+import {Composition} from 'remotion'
+import Overlay from './compositions/Overlay'
+import {FPS, HEIGHT, WIDTH} from './config'
+import useFitData from './fit-utils/useFitData'
 
-export const RemotionRoot: React.FC = () => {
+export default function RemotionRoot() {
+
+  const fitData = useFitData()
+  const totalDurationInSeconds = fitData.features[fitData.features.length - 1]?.properties.elapsed_time ?? 1
+
   return (
     <>
       <Composition
         id="Overlay"
         component={Overlay}
-        durationInFrames={75}
-        fps={30}
-        width={1920}
-        height={1080}
+        durationInFrames={totalDurationInSeconds * FPS}
+        fps={FPS}
+        width={WIDTH}
+        height={HEIGHT}
       />
     </>
-  );
-};
+  )
+}

@@ -5,25 +5,30 @@
   "repository": {},
   "license": "UNLICENSED",
   "dependencies": {
-    "@remotion/cli": "4.0.177",
-    "@remotion/google-fonts": "4.0.177",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "remotion": "4.0.177"
+    "@remotion/cli": "4.0.200",
+    "@remotion/google-fonts": "4.0.200",
+    "@remotion/media-utils": "4.0.200",
+    "d3": "7.9.0",
+    "easy-fit": "0.0.8",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.200"
   },
   "devDependencies": {
-    "@remotion/eslint-config": "4.0.177",
-    "@types/react": "^18.0.26",
-    "@types/web": "^0.0.143",
-    "eslint": "^8.43.0",
-    "prettier": "^3.2.5",
-    "typescript": "^5.4.5"
+    "@remotion/eslint-config": "4.0.200",
+    "@types/bun": "1.1.8",
+    "@types/d3": "7.4.3",
+    "@types/geojson": "7946.0.14",
+    "@types/react": "18.0.26",
+    "@types/web": "0.0.158",
+    "eslint": "8.43.0",
+    "prettier": "3.3.3",
+    "typescript": "5.5.4"
   },
   "scripts": {
-    "start": "remotion studio",
-    "build": "remotion render",
-    "upgrade": "remotion upgrade",
+    "start": "remotionb studio",
+    "build": "remotionb render",
+    "upgrade": "remotionb upgrade",
     "test": "eslint src --ext ts,tsx,js,jsx && tsc"
-  },
-  "packageManager": "npm@10.5.0"
+  }
 }
