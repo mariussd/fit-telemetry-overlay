@@ -34,6 +34,7 @@ function transformToFitData(data: any) {
     let prev_position_lat = 0
     let idx_records = 0
     let element: any = {}
+    let pausedTime = 0;
     for (
       idx_records = 0;
       idx_records < data.records.length;
@@ -41,10 +42,19 @@ function transformToFitData(data: any) {
     ) {
       element = data.records[idx_records]
 
+      if (!element.speed) {
+        pausedTime += 1;
+        continue;
+      }
+
+      if (!element.position_long || !element.position_lat) {
+        continue;
+      }
+
       if (idx_records > 0) {
         let f: any = {}
         f.type = 'Feature'
-        f.properties = element
+        f.properties = {...element, elapsed_time: element.elapsed_time - pausedTime}
         f.geometry = {}
         f.geometry.type = 'LineString'
         f.geometry.coordinates = [
