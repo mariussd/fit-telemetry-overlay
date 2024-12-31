@@ -1,4 +1,4 @@
-import {Composition} from 'remotion'
+import {Composition, OffthreadVideo, staticFile} from 'remotion'
 import Overlay from './compositions/Overlay'
 import {FPS, HEIGHT, WIDTH} from './config'
 import useFitData from './fit-utils/useFitData'

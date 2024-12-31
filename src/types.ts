@@ -7,7 +7,7 @@ export type FitProperties = {
   position_long: number
   distance: number
   accumulated_power: number
-  enhanced_speed: number
+  speed: number
   enhanced_altitude: number
   power: number
   heart_rate: number
