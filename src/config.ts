@@ -3,12 +3,7 @@ export const WIDTH = 3840
 export const HEIGHT = 2160
 
 export const COLORS = {
-  FG: 'rgba(215,210,209,1)',
-  BG: 'rgba(26,26,26,1)',
+  FG: 'red', // 'rgb(246, 242, 240)',
+  BG: 'blue', // 'rgba(175, 173, 173, 0.64)',
+  DOT: 'rgb(71, 148, 243)'
 }
-
-// export const COLORS = {
-//   FG: 'rgba(26,26,26,1)',
-//   BG: 'rgba(215,210,209,1)',
-// }
-

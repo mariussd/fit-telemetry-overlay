@@ -7,7 +7,6 @@ type Props = {
 }
 
 export default function Speedometer({speed, maxSpeed}: Props) {
-  console.log({speed, maxSpeed})
   const width = 400
   const height = 400
 

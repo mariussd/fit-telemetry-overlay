@@ -18,8 +18,6 @@ export default function Overlay() {
 
   const fitData = useFitData();
 
-  console.log({ fitData });
-
   const time = frame / fps;
 
   const currentSecond = Math.floor(time);
@@ -92,7 +90,8 @@ export default function Overlay() {
               position: "absolute",
               bottom: PAD,
               right: PAD,
-              minWidth: 500,
+              minWidth: 1000,
+              height: 1000,
             }}
           >
             <MapSegment
