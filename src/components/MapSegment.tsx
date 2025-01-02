@@ -9,31 +9,6 @@ type Props = {
   distance: number;
 };
 
-function calculateDistance(
-  lon1: number,
-  lat1: number,
-  lon2: number,
-  lat2: number
-) {
-  const R = 6371; // Radius of the Earth in kilometers
-
-  // Convert degrees to radians
-  const toRadians = (degrees: number) => degrees * (Math.PI / 180);
-
-  const dLat = toRadians(lat2 - lat1);
-  const dLon = toRadians(lon2 - lon1);
-
-  const a =
-    Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRadians(lat1)) *
-      Math.cos(toRadians(lat2)) *
-      Math.sin(dLon / 2) ** 2;
-
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-
-  return R * c; // Distance in kilometers
-}
-
 export default function MapSegment({
   featureCollection,
   feature,
@@ -55,15 +30,13 @@ export default function MapSegment({
   const projection = d3.geoMercator().fitHeight(height * 15, featureCollection);
 
   const [start, end] = feature.geometry.coordinates;
-  const mid: [number, number] = [
-    (start[0] + end[0]) / 2,
-    (start[1] + end[1]) / 2,
-  ];
 
   const path = d3.geoPath(projection)({
     type: "FeatureCollection",
     features: featureCollection.features,
   });
+
+  const altitudeInMeters = (feature.properties?.enhanced_altitude - 1) * 1000;
 
   const xInterpolation = interpolate(time, inputRange, [start[0], end[0]]);
   const yInterpolation = interpolate(time, inputRange, [start[1], end[1]]);
@@ -98,6 +71,9 @@ export default function MapSegment({
       <text fontSize="6" fill="black">
         <textPath href="#textPath" startOffset="30%">
           {distance.toFixed(1)} km
+        </textPath>
+        <textPath href="#textPath" startOffset="10%">
+          ▲ {altitudeInMeters.toFixed(0)} m
         </textPath>
       </text>
       <g clipPath="url(#circleViewBox)">
