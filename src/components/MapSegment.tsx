@@ -49,25 +49,10 @@ export default function MapSegment({
   const nextSecond = currentSecond + 1;
   const inputRange = [currentSecond, nextSecond];
 
-  const distanceComparisonIndex = Math.min(
-    featureIndex + 10,
-    featureCollection.features.length - 1
-  );
-  const comparisonFeature = featureCollection.features[distanceComparisonIndex];
-
-  const distanceBetweenFeatures = calculateDistance(
-    feature.geometry.coordinates[0][0],
-    feature.geometry.coordinates[0][1],
-    comparisonFeature.geometry.coordinates[1][0],
-    comparisonFeature.geometry.coordinates[1][1]
-  ) * 100;
-
-  console.log({distanceBetweenFeatures})
-
   const width = 70;
   const height = 70;
 
-  const projection = d3.geoMercator().fitHeight(height * 20, featureCollection);
+  const projection = d3.geoMercator().fitHeight(height * 15, featureCollection);
 
   const [start, end] = feature.geometry.coordinates;
   const mid: [number, number] = [
