@@ -9,6 +9,7 @@ import Speedometer from "../components/Speedometer";
 import HorisontalBar from "../components/HorisontalBar";
 import MapSegment from "../components/MapSegment";
 import useFitData from "../fit-utils/useFitData";
+import { HeartRate } from "../components/HeartRate";
 
 const PAD = 120;
 
@@ -84,6 +85,7 @@ export default function Overlay() {
             <Speedometer speed={speed} maxSpeed={60} />
             <HorisontalBar value={cadence} maxValue={120} unit={"rpm"} />
             <HorisontalBar value={power} maxValue={600} unit={"W"} />
+            <HeartRate heartRate={currentFeature.properties.heart_rate} />
           </div>
           <div
             style={{
