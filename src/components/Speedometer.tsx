@@ -40,12 +40,11 @@ export default function Speedometer({speed, maxSpeed}: Props) {
       <g
         transform={`translate(${width / 2}, ${height / 2})`}
         textAnchor={'middle'}
-        fontVariant={'tabular-nums'}
-        fontFamily={'SF Pro Rounded'}
+        fontFamily={'Helvetica'}
         fill={COLORS.FG}
       >
         <text
-          y={40}
+          y={30}
           fontSize={140}
           fontWeight={700}
           letterSpacing={'-0.04em'}

@@ -1,6 +1,8 @@
 import {
   AbsoluteFill,
   interpolate,
+  OffthreadVideo,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -10,6 +12,7 @@ import HorisontalBar from "../components/HorisontalBar";
 import MapSegment from "../components/MapSegment";
 import useFitData from "../fit-utils/useFitData";
 import { HeartRate } from "../components/HeartRate";
+import { COLORS } from "../config";
 
 const PAD = 120;
 
@@ -42,14 +45,6 @@ export default function Overlay() {
   const avgSpeed = rollingAvg(fitData, "speed", currentSecond, 3);
   const nextAvgSpeed = rollingAvg(fitData, "speed", nextSecond, 3);
 
-  const avgPower = rollingAvg(fitData, "power", currentSecond, 3);
-  const nextAvgPower = rollingAvg(fitData, "power", nextSecond, 3);
-
-  const avgCadence = rollingAvg(fitData, "cadence", currentSecond, 3);
-  const nextAvgCadence = rollingAvg(fitData, "cadence", nextSecond, 3);
-
-  const power = interpolate(time, inputRange, [avgPower, nextAvgPower]);
-  const cadence = interpolate(time, inputRange, [avgCadence, nextAvgCadence]);
   const distance =
     (currentFeature?.properties.distance || nextFeature?.properties.distance) ??
     0;
@@ -57,6 +52,7 @@ export default function Overlay() {
 
   return (
     <AbsoluteFill>
+      {/* <OffthreadVideo src={staticFile("video.mp4")} /> */}
       {dataReady && (
         <>
           <div
@@ -66,6 +62,8 @@ export default function Overlay() {
               width: "100%",
               display: "flex",
               justifyContent: "space-between",
+              fontFamily: "Helvetica",
+              color: COLORS.FG,
             }}
           >
             <span style={{ fontSize: 150 }}>{timeOfDay}</span>
@@ -76,15 +74,13 @@ export default function Overlay() {
               position: "absolute",
               bottom: PAD,
               left: PAD,
-              minWidth: 1600,
+              minWidth: 1000,
               display: "flex",
               alignItems: "end",
               gap: 40,
             }}
           >
             <Speedometer speed={speed} maxSpeed={60} />
-            <HorisontalBar value={cadence} maxValue={120} unit={"rpm"} />
-            <HorisontalBar value={power} maxValue={600} unit={"W"} />
             <HeartRate heartRate={currentFeature.properties.heart_rate} />
           </div>
           <div

@@ -44,7 +44,7 @@ export default function HorisontalBar({value, maxValue, unit}: Props) {
       <g
         transform={`translate(${width / 2}, ${height / 3})`}
         fontVariant={'tabular-nums'}
-        fontFamily={'SF Pro Rounded'}
+        fontFamily={'Arial'}
         fill={COLORS.FG}
       >
         <text

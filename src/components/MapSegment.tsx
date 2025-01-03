@@ -47,7 +47,7 @@ export default function MapSegment({
   const textOffset = 2;
 
   return (
-    <svg viewBox={`${x - width / 2} ${y - height / 2} ${width} ${height}`}>
+    <svg style={{padding: -20}} viewBox={`${x - 26 - width / 2} ${y - 26 - height / 2} ${width * 1.3} ${height * 1.3}`}>
       <defs>
         <clipPath id="circleViewBox">
           <circle cx={x} cy={y} r={r - 0.6} />
@@ -68,7 +68,7 @@ export default function MapSegment({
         stroke={COLORS.BG}
         strokeWidth={1.5}
       />
-      <text fontSize="6" fill="black">
+      <text fontFamily="Helvetica" fontSize="6" fill={COLORS.FG}>
         <textPath href="#textPath" startOffset="30%">
           {distance.toFixed(1)} km
         </textPath>
@@ -89,26 +89,6 @@ export default function MapSegment({
           stroke={COLORS.FG}
         />
         <circle cx={x} cy={y} r={1.5} fill={COLORS.DOT} />
-      </g>
-      <g
-        transform={`translate(${width}, ${height - 42})`}
-        textAnchor={"end"}
-        fontVariant={"tabular-nums"}
-        fontFamily={"SF Pro Rounded"}
-        fill={COLORS.FG}
-      >
-        <text
-          y={40}
-          x={-62}
-          fontSize={120}
-          fontWeight={700}
-          letterSpacing={"-0.04em"}
-        >
-          {/*distance.toFixed(1)*/}
-        </text>
-        <text y={40} fontSize={32} fontWeight={500}>
-          {/*km*/}
-        </text>
       </g>
     </svg>
   );
