@@ -8,7 +8,6 @@ import {
 } from "remotion";
 import { FitData, FitProperties } from "../types";
 import Speedometer from "../components/Speedometer";
-import HorisontalBar from "../components/HorisontalBar";
 import MapSegment from "../components/MapSegment";
 import useFitData from "../fit-utils/useFitData";
 import { HeartRate } from "../components/HeartRate";
