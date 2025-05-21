@@ -50,7 +50,7 @@ export default function Overlay() {
   const speed = interpolate(time, inputRange, [avgSpeed, nextAvgSpeed]);
 
   return (
-    <AbsoluteFill>
+    <AbsoluteFill style={{backgroundColor: 'black'}}>
       {/* <OffthreadVideo src={staticFile("video.mp4")} /> */}
       {dataReady && (
         <>

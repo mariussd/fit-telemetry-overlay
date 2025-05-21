@@ -63,7 +63,7 @@ function transformToFitData(data: any) {
     for (idx_records = 0; idx_records < data.records.length; idx_records++) {
       element = data.records[idx_records];
 
-      if (!element.speed || !element.distance) {
+      if (!element.speed) {
         pausedTime += 1;
         continue;
       }

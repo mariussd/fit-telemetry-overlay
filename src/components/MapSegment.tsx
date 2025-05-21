@@ -2,6 +2,7 @@ import * as d3 from "d3";
 import { Feature, FeatureCollection, LineString } from "geojson";
 import { COLORS } from "../config";
 import { interpolate, useCurrentFrame, useVideoConfig } from "remotion";
+import { useRef } from "react";
 
 type Props = {
   featureCollection: FeatureCollection;
@@ -16,6 +17,12 @@ export default function MapSegment({
 }: Props) {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
+
+  const usedDistance = useRef<number | null>(null)
+
+  if (distance > 0) {
+    usedDistance.current = distance
+  }
 
   const featureIndex = featureCollection.features.indexOf(feature);
 
@@ -70,7 +77,7 @@ export default function MapSegment({
       />
       <text fontFamily="Helvetica" fontSize="6" fill={COLORS.FG}>
         <textPath href="#textPath" startOffset="30%">
-          {distance.toFixed(1)} km
+          {(usedDistance.current ?? 0).toFixed(1)} km
         </textPath>
         <textPath href="#textPath" startOffset="10%">
           ▲ {altitudeInMeters.toFixed(0)} m
