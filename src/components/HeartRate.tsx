@@ -7,8 +7,6 @@ type Props = {
 let validatedHeartRate = 0;
 
 export const HeartRate = ({ heartRate }: Props) => {
-  console.log({ heartRate });
-
   const width = 1200;
   const height = 600;
 

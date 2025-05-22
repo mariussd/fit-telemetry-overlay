@@ -68,10 +68,6 @@ function transformToFitData(data: any) {
         continue;
       }
 
-      if (idx_records < 10) {
-        console.log({ long: element.position_long, lat: element.position_lat });
-      }
-
       const coordinates = createCoordinates(
         prev_position_long,
         prev_position_lat,
